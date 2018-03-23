@@ -9,7 +9,7 @@ const Note = require('../models/note');
 
 /* ========== GET/READ ALL ITEMS ========== */
 router.get('/notes', (req, res, next) => {
-  const { searchTerm, folderId,tags} = req.query;
+  const { searchTerm, folderId,tagId} = req.query;
 
   let filter = {};
 
@@ -22,8 +22,8 @@ router.get('/notes', (req, res, next) => {
     filter.folderId = folderId;
   }
 
-  if(tags) {
-    filter.tags = tags;
+  if(tagId) {
+    filter.tags = tagId;
   }
   
    Note.find(filter)
